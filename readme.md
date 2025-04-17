@@ -90,8 +90,6 @@ Create a `.env` file in the root directory:
 ```env
 DATABASE_URL=postgresql://username:password@localhost:5432/bookdb
 SECRET_KEY=your-secret-key
-ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=1440
 MODEL_NAME=mistral or llama3
 ```
 
