@@ -143,7 +143,6 @@ python test\test_apis.py
 **POST** `/register`
 
 ```json
-Request Body:
 {
   "username": "johndoe",
   "password": "securepassword"
