@@ -13,7 +13,7 @@ An intelligent and secure Book Management System built with **FastAPI**, **Postg
 - Book recommendations powered by LLM
 - Search and filter capabilities
 - Auto-generated API docs with Swagger and Redoc
-- Unit testing with Pytest
+- Unit testing with httpx and Python
 
 ---
 
@@ -95,7 +95,7 @@ MODEL_NAME=mistral or llama3
 
 ### 5. Start PostgreSQL
 
-Ensure PostgreSQL is running and the database (e.g., `bookdb`) is created.
+Ensure PostgreSQL is running and create the database (e.g., `bookdb`).
 
 ---
 
@@ -134,6 +134,139 @@ python test\test_apis.py
 
 ---
 
+# Here are the information about all the endpoints
+
+## Authentication
+
+### Register
+
+**POST** `/register`
+
+```json
+Request Body:
+{
+  "username": "johndoe",
+  "password": "securepassword"
+}
+```
+
+### Login
+
+**POST** `/token`
+
+Form-data:
+- `username`
+- `password`
+
+Response:
+```json
+{
+  "access_token": "your.jwt.token",
+  "token_type": "bearer"
+}
+```
+
+---
+
+## Book Endpoints (Require Bearer Token)
+
+### Create Book
+
+**POST** `/books`
+
+```json
+{
+  "title": "Book Title",
+  "author": "Author Name",
+  "genre": "Fiction",
+  "summary": "Optional book description"
+}
+```
+
+### Get All Books
+
+**GET** `/books`
+
+### Get Book by ID
+
+**GET** `/books/{book_id}`
+
+### Update Book
+
+**PUT** `/books/{book_id}`
+
+```json
+{
+  "title": "Updated Title",
+  "author": "Updated Author",
+  "genre": "Updated Genre",
+  "summary": "Updated Summary"
+}
+```
+
+### Delete Book
+
+**DELETE** `/books/{book_id}`
+
+---
+
+## Reviews
+
+### Add Review
+
+**POST** `/books/{book_id}/reviews`
+
+```json
+{
+  "reviewer": "Alice",
+  "comment": "Amazing book",
+  "rating": 4.5
+}
+```
+
+### Get All Reviews
+
+**GET** `/books/{book_id}/reviews`
+
+---
+
+## Summary & Recommendation
+
+### Get Summary & Average Rating
+
+**GET** `/books/{book_id}/summary`
+
+### Generate Summary (LLM)
+
+**POST** `/generate-summary`
+
+```json
+{
+  "content": "Long content of the book"
+}
+```
+
+### Get Book Summary & Rating (Alt)
+
+**GET** `/books/{book_id}/summary`
+
+### Get Recommendations
+
+**GET** `/recommendations`
+
+Query parameters (optional):
+- `preferred_genre`
+
+---
+
+## Root Endpoint
+
+**GET** `/`
+
+Returns:
+```json
+{ "message": "Book Manager API" }
+```
 
 ## Author
 
