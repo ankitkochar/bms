@@ -144,8 +144,8 @@ python test\test_apis.py
 
 ```json
 {
-  "username": "johndoe",
-  "password": "securepassword"
+  "username": "ankit1",
+  "password": "ankit123"
 }
 ```
 
@@ -244,10 +244,6 @@ Response:
   "content": "Long content of the book"
 }
 ```
-
-### Get Book Summary & Rating (Alt)
-
-**GET** `/books/{book_id}/summary`
 
 ### Get Recommendations
 

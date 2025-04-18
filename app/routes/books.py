@@ -34,13 +34,13 @@ async def delete(book_id: int, db: AsyncSession = Depends(get_db), current_user:
     await crud.delete_book(db, book_id)
     return {"detail": "Deleted"}
 
-@router.get("/books/{book_id}/summary", response_model=schemas.SummaryResponse)
-async def summary(book_id: int, db: AsyncSession = Depends(get_db), current_user: str = Depends(get_current_user)):
-    book = await crud.get_book(db, book_id)
-    reviews = await crud.get_reviews(db, book_id)
-    avg = await crud.get_avg_rating(db, book_id)
-    summary = await llama.generate_summary(book.summary or book.title)
-    return {"summary": summary, "average_rating": avg}
+# @router.get("/books/{book_id}/summary", response_model=schemas.SummaryResponse)
+# async def summary(book_id: int, db: AsyncSession = Depends(get_db), current_user: str = Depends(get_current_user)):
+#     book = await crud.get_book(db, book_id)
+#     reviews = await crud.get_reviews(db, book_id)
+#     avg = await crud.get_avg_rating(db, book_id)
+#     summary = await llama.generate_summary(book.summary or book.title)
+#     return {"summary": summary, "average_rating": avg}
 
 @router.get("/recommendations", response_model=List[schemas.BookResponse])
 async def recommendations(preferences: schemas.RecommendationRequest = Depends(), db: AsyncSession = Depends(get_db), current_user: str = Depends(get_current_user)):
@@ -71,6 +71,6 @@ async def get_book_summary_and_rating(id: int, db: AsyncSession = Depends(get_db
     return {
         "title": book.title,
         "author": book.author,
-        "summary": summary_response["summary"],
+        "summary": summary_response,
         "average_rating": average_rating
     }
