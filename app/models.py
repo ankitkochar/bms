@@ -1,7 +1,6 @@
 from sqlalchemy import Column, Integer, String, Text, ForeignKey
 from sqlalchemy.orm import relationship
 from .database import Base
-from sqlalchemy import Column, Integer, String
 from app.database import Base
 
 class Book(Base):

@@ -6,8 +6,7 @@ from app.auth import register_user, RegisterUser
 from fastapi import Depends, APIRouter
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.database import get_db
-from app.auth import register_user, RegisterUser
-from app.routes import auth_routes  # or wherever your auth routes are
+from app.routes import auth_routes
 import logging
 import os
 
