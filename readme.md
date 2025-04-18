@@ -24,7 +24,7 @@ An intelligent and secure Book Management System built with **FastAPI**, **Postg
 - **ORM**: SQLAlchemy
 - **Authentication**: JWT (`python-jose`, `passlib`)
 - **AI Integration**: Ollama (LLaMA 3 / Mistral)
-- **Testing**: Pytest
+- **Testing**: httpx, asyncio
 - **Environment Management**: python-dotenv
 
 ---
