@@ -34,7 +34,6 @@ An intelligent and secure Book Management System built with **FastAPI**, **Postg
 ```
 bms/
 ├── .env
-├── DockerFile
 ├── main.py                # Entry point for FastAPI application
 ├── readme.md              # Project documentation
 ├── requirements.txt       # Python dependencies
